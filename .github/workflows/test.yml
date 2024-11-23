@@ -1,11 +1,21 @@
-steps:
-- uses: actions/checkout@v4
-- name: Set up Python
-  uses: actions/setup-python@v5
-  with:
-    python-version: '3.12'
-- name: Testing
-  run: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    pytest .
+name: Testing Jawaban
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: testing-jawban
+    runs-on: ubuntu-latest  
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Testing
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pytest .
